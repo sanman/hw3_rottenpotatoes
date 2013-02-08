@@ -35,3 +35,12 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   rating_list.split(', ').each {|x| step %{I check "ratings_#{x}"}}
   end
 end
+
+Then /^I should see all of the movies "([^"]*)"$/ do |number_of_movies|
+  page.should have_css("table#movies tbody tr", :count => number_of_movies.to_i)
+end
+
+Then /^I should see none of the movies "([^"]*)"$/ do |number_of_movies|
+  page.should have_css("table#movies tr", :count => number_of_movies.to_i)
+end
+

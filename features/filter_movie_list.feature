@@ -44,13 +44,13 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And I should not see "Chicken Run"
 
 Scenario: no ratings selected
-  When I uncheck the following ratings: PG, R, PG-13, NC-17, G
+  When I uncheck the following ratings: PG, R, PG-13, G
   And I press "ratings_submit"
   Then I should be on the home page
-  And I should see none of the movies
+  And I should see none of the movies "1"
 
 Scenario: all ratings selected
   When I check the following ratings: PG, R, PG-13, NC-17, G
   And I press "ratings_submit"
   Then I should be on the home page
-  And I should see all of the movies
+  And I should see all of the movies "10"
